@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/style/style.css}">
+</head>
+<body>
+    <h1>Design your Taco</h1>
+    <img th:src="@{/images/TacoCloud.png}" alt="TacoCloud.png">
+    <form action="/design" th:object="${design}" method="post">
+        <span th:if="${#fields.hasErrors('ingredients')}"
+              th:errors="*{ingredients}">Ingredient Errors</span>
+        <div class="grid">
+            <div th:each="type : ${types}">
+                <div class="ingredient-group">
+                    <h3>Designate your <span th:text="${type}">INGREDIENT</span>:</h3>
+                    <div th:each="ingredient : ${__${type}__}">
+                        <input type="checkbox" name="ingredients" th:value="${ingredient.id}">
+                        <span th:text="${ingredient.name}">INGREDIENT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3><label for="tacoName">Names your taco:</label></h3>
+        <input type="text" name="name" id="tacoName">
+        <span th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">Name Error</span>
+        <input type="submit" value="Design">
+    </form>
+</body>
+</html>

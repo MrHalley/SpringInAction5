@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Order your taco creations!</h1>
+    <img th:src="@{/images/TacoCloud.png}" alt="TacoCloud.png">
+    <a href="/design">Design another taco</a>
+    <form action="/orders" method="post" th:object="${order}">
+        <h3>Deliver my taco masterpieces to...</h3>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <span th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">Name required</span>
+        <br/>
+
+        <label for="street">Street address:</label>
+        <input type="text" name="street" id="street">
+        <span th:if="${#fields.hasErrors('street')}"
+              th:errors="*{street}">street required</span>
+        <br/>
+
+        <label for="city">City:</label>
+        <input type="text" name="city" id="city">
+        <span th:if="${#fields.hasErrors('city')}"
+              th:errors="*{city}">City required</span>
+        <br/>
+
+        <label for="city">State:</label>
+        <input type="text" name="state" id="state">
+        <span th:if="${#fields.hasErrors('state')}"
+              th:errors="*{state}">State required</span>
+        <br/>
+
+        <label for="zip">Zip:</label>
+        <input type="text" name="zip" id="zip">
+        <span th:if="${#fields.hasErrors('zip')}"
+              th:errors="*{zip}">Zip required</span>
+        <br/>
+        <h3>Here's how I'll pay...</h3>
+        <label for="ccNumber">ccNumber:</label>
+        <input type="text" name="ccNumber" id="ccNumber">
+        <span th:if="${#fields.hasErrors('ccNumber')}"
+              th:errors="*{ccNumber}">ccNumber error</span>
+        <br/>
+
+        <label for="ccExpiration">ccExpiration:</label>
+        <input type="text" name="ccExpiration" id="ccExpiration">
+        <span th:if="${#fields.hasErrors('ccExpiration')}"
+              th:errors="*{ccExpiration}">ccExpiration error</span>
+        <br/>
+
+        <label for="ccCVV">ccVVV:</label>
+        <input type="text" name="ccCVV" id="ccCVV">
+        <span th:if="${#fields.hasErrors('ccCVV')}"
+              th:errors="*{ccCVV}">ccCVV error</span>
+        <br/>
+
+        <input type="submit" value="Submit order"/>
+    </form>
+</body>
+</html>
