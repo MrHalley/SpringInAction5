@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+    <h1>Welcoming to ...</h1>
+    <img th:src="@{/images/TacoCloud.png}" alt="TacoCloud.png">
+    <a href="/design">Design another taco</a>
+    <form action="" th:object="${order}">
+        <h3>Deliver my taco masterpieces to...</h3>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <span th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">Name error</span>
+        <br>
+    </form>
 </body>
 </html>

@@ -1,0 +1,4 @@
+#禁用模板引擎的缓存。此项目以用DevTools了，可以不用配置下面属性
+#spring:
+#  thymeleaf:
+#    cache: false
